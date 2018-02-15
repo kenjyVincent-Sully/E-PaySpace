@@ -1,8 +1,8 @@
-// Stock l'objet gulp
+// Stock the gulp object
 var gulp = require('gulp');
-// Stock l'objet sass
+// Stock the sass object
 var sass = require('gulp-sass');
-// Permet d'ajouter des prefixes en css 
+// Allows you to add prefixes in css
 // ex : transform: scale(2) =-moz-transform: scale(2);-publickit-transform: scale(2);
 var autoprefixer = require('gulp-autoprefixer');
 // Generate CSS Sourcemaps
@@ -31,8 +31,8 @@ var sassOption = {
 };
 
 //Compile SCSS files
-// Permet de creer une tache(ressemble a une fonction) le premier parametre est le nom de la tache
-// et permet d'etre appeler dans la console ex gulp sass
+//Allows you to create a task (looks like a function) The first parameter is the name of the task
+// and can be called in the console ex gulp sass
 gulp.task('sass', function() {
   return gulp.src('src/css/scss/*.scss')
   .pipe(autoprefixer())
@@ -67,15 +67,15 @@ gulp.task('clean', function(callback){
   return cache.clearAll(callback);
 });
 
-// Permet de rafraichir la page des modification du sass
+// Refresh the sass modification page
 gulp.task('browserSync', function() {
   browserSync({
     proxy: 'http://127.0.0.1/epayspace/src/index.html'
   })
 });
 
-// Permet d'observer chaque modification dans les ficher .scss
-// en cas de changement la tache sass sera appeler
+// Lets you see each change in .css files
+// in case of change the sass task will call
 gulp.task('watch',function() {
   gulp.watch('src/css/scss/*.scss',['sass']);
   gulp.watch('src/*.html', browserSync.reload);
@@ -87,8 +87,8 @@ gulp.task('build', function(callback){
   runSequence('clean:public','sass', ['useref'], callback);
 });
 
-// Cette tache s'appel default permet d'etre lancé en tapant la commande gulp
-// les tache entre crochet permet de lancer en même temps
+// This task is called default and can be started by typing the gulp command
+// The spot between hook allows to launch at the same time
 gulp.task('default', function(callback){
   runSequence(['browserSync','watch'],callback);
 });
