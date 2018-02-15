@@ -3,7 +3,7 @@ var gulp = require('gulp');
 // Stock l'objet sass
 var sass = require('gulp-sass');
 // Permet d'ajouter des prefixes en css 
-// ex : transform: scale(2) =-moz-transform: scale(2);-webkit-transform: scale(2);
+// ex : transform: scale(2) =-moz-transform: scale(2);-publickit-transform: scale(2);
 var autoprefixer = require('gulp-autoprefixer');
 // Generate CSS Sourcemaps
 var sourcemaps = require('gulp-sourcemaps');
@@ -34,57 +34,57 @@ var sassOption = {
 // Permet de creer une tache(ressemble a une fonction) le premier parametre est le nom de la tache
 // et permet d'etre appeler dans la console ex gulp sass
 gulp.task('sass', function() {
-  return gulp.src('dev/css/scss/*.scss')
+  return gulp.src('src/css/scss/*.scss')
   .pipe(autoprefixer())
   .pipe(sass(sassOption).on('error', sass.logError))
-  .pipe(gulp.dest('dev/css'))
+  .pipe(gulp.dest('src/css'))
   .pipe(browserSync.reload({
     stream: true
   }));
 });
 
-//Copy CSS sourcemaps from dev to web folder
+//Copy CSS sourcemaps from src to public folder
 gulp.task('cssmaps', function(){
-  return gulp.src('dev/css/maps/**/*')
-    .pipe(gulp.dest('web/css/maps'));
+  return gulp.src('src/css/maps/**/*')
+    .pipe(gulp.dest('public/css/maps'));
 });
 
 //Read HTML file to merge CSS and JS than minify them
 gulp.task('useref', function(){
 
-  return gulp.src('dev/*.html')
+  return gulp.src('src/*.html')
     .pipe(useref())
     .pipe(gulpif('*.css', minifyCSS({shorthandCompacting:false}).on('error', gutil.log)))
     .pipe(gulpif('*.js', uglify().on('error', gutil.log)))
     .pipe(gulpif('*.css',sourcemaps.write('css/maps')))
     .pipe(gulpif('*.js',sourcemaps.write('js/maps')))
-    .pipe(gulp.dest('web'));
+    .pipe(gulp.dest('public'));
 });
 
-//Delete web folder
+//Delete public folder
 gulp.task('clean', function(callback){
-  del('web');
+  del('public');
   return cache.clearAll(callback);
 });
 
 // Permet de rafraichir la page des modification du sass
 gulp.task('browserSync', function() {
   browserSync({
-    proxy: 'http://127.0.0.1/epayspace/dev/index.html'
+    proxy: 'http://127.0.0.1/epayspace/src/index.html'
   })
 });
 
 // Permet d'observer chaque modification dans les ficher .scss
 // en cas de changement la tache sass sera appeler
 gulp.task('watch',function() {
-  gulp.watch('dev/css/scss/*.scss',['sass']);
-  gulp.watch('dev/*.html', browserSync.reload);
-  gulp.watch('dev/js/*.js', browserSync.reload);
+  gulp.watch('src/css/scss/*.scss',['sass']);
+  gulp.watch('src/*.html', browserSync.reload);
+  gulp.watch('src/js/*.js', browserSync.reload);
 });
 
-//Run sequence to build web folder
+//Run sequence to build public folder
 gulp.task('build', function(callback){
-  runSequence('clean:web','sass', ['useref'], callback);
+  runSequence('clean:public','sass', ['useref'], callback);
 });
 
 // Cette tache s'appel default permet d'etre lancé en tapant la commande gulp
