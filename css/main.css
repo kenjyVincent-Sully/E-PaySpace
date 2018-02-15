@@ -1,0 +1,155 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+header {
+  background-color: #031d40;
+  height: 150px;
+}
+
+header .logo {
+  position: absolute;
+  margin: auto;
+  top: 50px;
+  left: 0;
+  right: 0;
+}
+
+body {
+  width: 350px;
+  margin: 0 auto;
+  position: relative;
+  top: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: inset 0px -4px #031d40;
+}
+
+body .inputWidthIcon {
+  margin: 0px 25px 0px 25px;
+  position: relative;
+}
+
+body .inputWidthIcon span {
+  border: 1px solid #a5a5a5;
+  border-radius: 5px;
+  padding: 12px;
+  top: 1px;
+  position: absolute;
+}
+
+body .inputWidthIcon ::placeholder {
+  color: #a5a5a5;
+  padding-left: 70px;
+}
+
+body .inputWidthIcon .styleInput {
+  border-radius: 5px;
+  border: 1px solid #e7ebee;
+  margin-bottom: 15px;
+  width: 100%;
+  height: 40px;
+}
+
+body .inputWidthIcon label {
+  font-family: arial;
+  font-size: 12px;
+}
+
+body .inputWidthIcon .btn-next {
+  background-color: #2ecc71;
+  border-radius: 5px;
+  border: 0;
+  box-shadow: 0 5px #27ae60;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 700;
+  width: 100%;
+  -webkit-appearance: none;
+  outline: 0;
+  text-transform: uppercase;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  margin-top: 20px;
+}
+
+body .inputWidthIcon .btn-next:active {
+  background-color: #2ecc71;
+  box-shadow: 0 5px #27ae60;
+  transform: translateY(4px);
+}
+
+body .inputWidthIcon .termsConditions {
+  text-decoration: none;
+  color: #3498db;
+}
+
+body .inputMarginTop {
+  margin-top: 40px;
+}
+
+body .inputMarginBottom {
+  margin-bottom: 40px;
+}
+
+body .valid {
+  border: 1px solid #92FCA1;
+  box-shadow: inset 0 0 10px #92FCA1;
+  -webkit-box-shadow: inset 0 0 10px #92FCA1;
+  -ms-box-shadow: inset 0 0 10px #92FCA1;
+  background: 0 0;
+}
+
+body .error {
+  border: 1px solid #FF5959;
+  box-shadow: inset 0 0 10px #FF5959;
+  -webkit-box-shadow: inset 0 0 10px #FF5959;
+  -ms-box-shadow: inset 0 0 10px #FF5959;
+  background: 0 0;
+}
