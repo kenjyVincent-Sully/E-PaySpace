@@ -30,43 +30,57 @@ var sassOption = {
 // Permet de creer une tache(ressemble a une fonction) le premier parametre est le nom de la tache
 // et permet d'etre appeler dans la console ex gulp sass
 gulp.task('sass', function() {
-  return gulp.src('css/scss/*.scss')
+  return gulp.src('dev/css/scss/*.scss')
   .pipe(autoprefixer())
   .pipe(sass(sassOption).on('error', sass.logError))
-  .pipe(gulp.dest('css'))
+  .pipe(gulp.dest('dev/css'))
   .pipe(browserSync.reload({
     stream: true
   }));
 });
 
+//Copy CSS sourcemaps from dev to web folder
+gulp.task('cssmaps', function(){
+  return gulp.src('dev/css/maps/**/*')
+    .pipe(gulp.dest('web/css/maps'));
+});
+
 //Read HTML file to merge CSS and JS than minify them
 gulp.task('useref', function(){
 
-  return gulp.src('*.html')
+  return gulp.src('dev/*.html')
     .pipe(useref())
     .pipe(gulpif('*.css', minifyCSS({shorthandCompacting:false}).on('error', gutil.log)))
     .pipe(gulpif('*.js', uglify().on('error', gutil.log)))
+    .pipe(gulpif('*.css',sourcemaps.write('css/maps')))
+    .pipe(gulpif('*.js',sourcemaps.write('js/maps')))
     .pipe(gulp.dest('web'));
+});
+
+//Delete web folder
+gulp.task('clean', function(callback){
+  del('web');
+  return cache.clearAll(callback);
 });
 
 // Permet de rafraichir la page des modification du sass
 gulp.task('browserSync', function() {
   browserSync({
-    proxy: 'http://127.0.0.1/e-paySpace/index.html'
+    proxy: 'http://127.0.0.1/epayspace/dev/index.html'
   })
 });
 
 // Permet d'observer chaque modification dans les ficher .scss
 // en cas de changement la tache sass sera appeler
 gulp.task('watch',function() {
-  gulp.watch('css/scss/*.scss',['sass']);
-  gulp.watch('*.html', browserSync.reload);
-  gulp.watch('js/*.js', browserSync.reload);
+  gulp.watch('dev/css/scss/*.scss',['sass']);
+  gulp.watch('dev/*.html', browserSync.reload);
+  gulp.watch('dev/js/*.js', browserSync.reload);
 });
 
 //Run sequence to build web folder
 gulp.task('build', function(callback){
-  runSequence('sass', ['useref'], callback);
+  runSequence('clean:web','sass', ['useref'], callback);
 });
 
 // Cette tache s'appel default permet d'etre lancé en tapant la commande gulp
