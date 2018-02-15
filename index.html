@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8">
+		<title>E-PAYSPACE</title>
+		<meta name ="description" content =" ">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+	</head>
+	<body>
+		<header>
+            <img class="logo" src="img/logoPS.png" alt="Logo E-PAYSPACE"/>
+        </header> 
+        <form id="form" action="" method="post">
+            <div class="inputWidthIcon inputMarginTop" id="form">
+                <span><i class="far fa-credit-card" aria-hidden="true"></i></span> 
+                <input id="cardNumber" name="cardNumber" class="styleInput" type="text" autocomplete="off" placeholder="Card Number"> 
+            </div>
+
+            <div class="inputWidthIcon">
+                <span><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 
+                <input id="expiryDate" name="expiryDate" class="styleInput" type="text" placeholder="Expiry Date"><br>
+                
+            </div>
+
+            <div class="inputWidthIcon">
+                <span><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 
+                <input id="age" name="birthDate" class="styleInput" type="text" placeholder="Birth Date"><br>
+            </div>
+
+            <div class="inputWidthIcon">
+                <input id="conditions" name="conditions" class="styleCheckbox" type="checkbox">
+                <label for="conditions">I have read and agree <a class="termsConditions" href="#">Terms and Conditions</a> for Solvo products.</label>
+            </div>
+
+            <div class="inputWidthIcon inputMarginBottom">
+                <input id="next" class="btn-next" type="submit" value="Next">
+            </div>
+        </form>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+        <!-- <script src="js/main.js"></script> -->
+        <script src="js/test.js"></script>
+	</body>
+</html>
