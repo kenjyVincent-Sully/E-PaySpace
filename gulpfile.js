@@ -5,6 +5,10 @@ var sass = require('gulp-sass');
 // Permet d'ajouter des prefixes en css 
 // ex : transform: scale(2) =-moz-transform: scale(2);-webkit-transform: scale(2);
 var autoprefixer = require('gulp-autoprefixer');
+// Generate CSS Sourcemaps
+var sourcemaps = require('gulp-sourcemaps');
+// Add image minify in cache
+var cache = require('gulp-cache');
 // Merge JS Files
 var useref = require('gulp-useref');
 // Add if support
