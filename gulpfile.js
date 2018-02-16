@@ -11,6 +11,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var cache = require('gulp-cache');
 // Merge JS Files
 var useref = require('gulp-useref');
+//Minify Images
+var imagemin = require('gulp-imagemin');
 // Add if support
 var gulpif = require('gulp-if');
 // Clear cache
@@ -37,7 +39,9 @@ var sassOption = {
 // and can be called in the console ex gulp sass
 gulp.task('sass', function() {
   return gulp.src('src/css/scss/*.scss')
+  .pipe(sourcemaps.init())
   .pipe(autoprefixer())
+  .pipe(sourcemaps.write('maps'))
   .pipe(sass(sassOption).on('error', sass.logError))
   .pipe(gulp.dest('src/css'))
   .pipe(browserSync.reload({
@@ -61,6 +65,15 @@ gulp.task('useref', function(){
     .pipe(gulpif('*.css',sourcemaps.write('css/maps')))
     .pipe(gulpif('*.js',sourcemaps.write('js/maps')))
     .pipe(gulp.dest('public'));
+});
+
+//Compresses images
+gulp.task('images', function(){
+  return gulp.src('src/img/**/*.+(png|jpg|gif|svg)')
+    .pipe(cache(imagemin({
+      interlaced: true
+    })))
+    .pipe(gulp.dest('public/img'));
 });
 
 //Delete public folder
@@ -90,7 +103,7 @@ gulp.task('watch',function() {
 
 //Run sequence to build public folder
 gulp.task('build', function(callback){
-  runSequence('clean:public','sass', ['useref'], callback);
+  runSequence('clean:public','sass', ['useref','images'], callback);
 });
 
 // This task is called default and can be started by typing the gulp command
