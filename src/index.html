@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>E-PAYSPACE</title>
 		<meta name ="description" content =" ">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
         <!--build:css css/main.min.css -->
         <link rel="stylesheet" type="text/css" href="css/main.css" />
@@ -14,36 +14,40 @@
 		<header>
             <img class="logo" src="img/logoPS.png" alt="Logo E-PAYSPACE"/>
         </header> 
-        <form id="form" method="post">
-            <div class="inputWidthIcon inputMarginTop">
-                <span><i class="far fa-credit-card" aria-hidden="true"></i></span> 
-                <input id="cardNumber" name="cardNumber" class="styleInput" type="text" autocomplete="off" placeholder="Card Number"> 
-            </div>
-
-            <div class="inputWidthIcon">
-                <span><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 
-                <input id="expiryDate" name="expiryDate" class="styleInput" type="text" placeholder="Expiry Date"><br>
-                
-            </div>
-
-            <div class="inputWidthIcon">
-                <span><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 
-                <input id="birthDate" name="birthDate" class="styleInput" type="text" placeholder="Birth Date"><br>
-            </div>
-
-            <div class="inputWidthIcon">
-                <input id="conditions" name="conditions" class="styleCheckbox" type="checkbox">
-                <label for="conditions">I have read and agree <a class="termsConditions" href="#">Terms and Conditions</a> for Solvo products.</label>
-            </div>
-
-            <div class="inputWidthIcon inputMarginBottom">
-                <input id="next" class="btn-next" type="submit" value="Next">
-            </div>
-        </form>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+        <main>
+            <form id="form" method="post">
+                <div class="inputWidthIcon inputMarginTop" id="form">
+                    <span><i class="far fa-credit-card" aria-hidden="true"></i></span> 
+                    <input id="cardNumber" name="cardNumber" class="styleInput" type="text" autocomplete="off" placeholder="Card Number" maxlength="19"> 
+                </div>
+    
+                <div class="inputWidthIcon">
+                    <span><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 
+                    <input id="expiryDate" name="expiryDate" class="styleInput" type="text" placeholder="Expiry Date" maxlength="5"><br>
+                    
+                </div>
+    
+                <div class="inputWidthIcon">
+                    <span><i class="far fa-calendar-alt" aria-hidden="true"></i></span> 
+                    <input id="birthday" name="birthDate" class="styleInput" type="text" placeholder="Birth Date" maxlength="10"><br>
+                </div>
+    
+                <div class="inputWidthIcon">
+                    <input id="conditions" name="conditions" class="styleCheckbox" type="checkbox" value="0">
+                    <label for="conditions">I have read and agree <a class="termsConditions" href="#">Terms and Conditions</a> for Solvo products.</label>
+                </div>
+    
+                <div class="inputWidthIcon inputMarginBottom">
+                    <input id="next" class="btn-next" type="submit" value="Next">
+                </div>
+            </form>
+        </main>
+        
         <!--build:js js/main.min.js-->
-        <!-- <script src="js/main.js"></script>
-        <script src="js/test.js"></script> -->
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="js/components/Form.js"></script>
+        <script src="js/components/FormValidate.js"></script>
+        <script src="js/main.js"></script>
         <!--endbuild-->
 	</body>
 </html>

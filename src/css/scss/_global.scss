@@ -153,4 +153,12 @@ body{
         -ms-box-shadow: inset 0 0 10px #FF5959;
         background: 0 0;
     }
+    label{
+        &.error{
+            border: 0;
+            box-shadow: none;
+            -webkit-box-shadow: 0 none;
+            color: #FF5959;
+        }
+    }
 }
