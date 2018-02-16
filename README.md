@@ -1,15 +1,13 @@
 # E-PAYSPACE
-=================
-Test
 
 ## Installation
-**nmp i or npm install**
+** nmp i or npm install **
 
-##Command 
-*gulp : Start the project
+## Command 
+* gulp : Start the project
 
-*gulp build : generate the product version with the files minify
+* gulp build : generate the product version with the files minify
 
-##Configuration
+## Configuration
 
 Change the path of the browserSync in the file gulpfile.js line 92
