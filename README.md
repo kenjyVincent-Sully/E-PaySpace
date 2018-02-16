@@ -1,7 +1,7 @@
 # E-PAYSPACE
 
 ## Installation
-** nmp i or npm install **
+ nmp i or npm install
 
 ## Command 
 * gulp : Start the project
