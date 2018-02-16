@@ -13,6 +13,8 @@ var cache = require('gulp-cache');
 var useref = require('gulp-useref');
 // Add if support
 var gulpif = require('gulp-if');
+// Clear cache
+var del = require('del');
 // Minify JS
 var uglify = require('gulp-uglify');
 // Minify CSS
@@ -67,6 +69,10 @@ gulp.task('clean', function(callback){
   return cache.clearAll(callback);
 });
 
+//Clear Web folder and keep images already generated
+gulp.task('clean:public', function(callback){
+  return del(['public/**/*'], callback);
+});
 // Refresh the sass modification page
 gulp.task('browserSync', function() {
   browserSync({
